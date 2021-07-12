@@ -1,0 +1,32 @@
+{% load webpack %}
+
+{% load WebpackBundle from webpack %}
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <link
+      rel="shortcut icon"
+      type="image/svg"
+      href="{% static '/src/images/favicon.svg' %}"
+    />
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static '/src/css/style.css' %}" />
+    <title>Django React Webpack</title>
+
+    {% WebpackBundle 'main' 'css' %}
+  </head>
+  <body>
+    <div id="root"></div>
+
+    {% block content %} {% endblock %}
+     {% WebpackBundle 'main' 'js' %}
+
+    </body>
+</html>
